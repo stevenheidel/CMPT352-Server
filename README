@@ -7,6 +7,8 @@ All servlets are in src/ under the cmpt352server package. JSPs and static files 
 - allows simple login using QR code as second step
 
 ---TODO---
+- add way to log out
+- make final protected screen to go to when logged in
 - 60 database queries per user is probably not the best
 - error checking and encryption
 - better session tracking to make sure people are logged in at right points
