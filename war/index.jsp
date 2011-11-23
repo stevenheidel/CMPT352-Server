@@ -20,7 +20,7 @@
     <p><a href="/login_step1.jsp">Login</a></p>
     <p><a href="/register.jsp">Register</a></p>
     
-    <h1>User List</h1>
+    <h2>User List</h2>
     
     <ul>
     <%

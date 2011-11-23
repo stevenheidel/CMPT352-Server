@@ -3,31 +3,52 @@ package cmpt352server;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.SecureRandom;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class GenerateQRCode extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	// private static final Logger log = Logger.getLogger(RegisterUser.class.getName());
+	private SecureRandom random = new SecureRandom();
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	            throws IOException {
-		// get username
-		HttpSession session = req.getSession(true);
-		String code = (String) session.getAttribute("username");
+		// generate random code
+		String code = new BigInteger(130, random).toString(32);
 		
+		// store code in session and in database with timestamp
+		HttpSession session = req.getSession(true);
+		session.setAttribute("code", code);
+		
+		String username = (String) session.getAttribute("username");
+		Date time = new Date();
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Entity token = new Entity("Token", code);
+		token.setProperty("username", username);
+		token.setProperty("time", time);
+		token.setProperty("used", false);
+		
+		datastore.put(token);
+				
 		// chart size
 		String chs = "300x300";
 		// chart data
-		String chl = code;
+		String chl = req.getScheme() + "://" + req.getServerName() + req.getContextPath() + "/api/qrauth/" + code;
 
-		// get the qr code from Google
+		// get the QR code from Google
 		URL url = new URL("https://chart.googleapis.com/chart?cht=qr&chs=" + chs + "&chl=" + URLEncoder.encode(chl, "UTF-8"));
 		ByteArrayOutputStream bais = new ByteArrayOutputStream();
 		InputStream is = null;
