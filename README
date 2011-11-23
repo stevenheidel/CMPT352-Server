@@ -1,1 +1,17 @@
 Fairly straightforward, just run as a web application and then go to localhost:8888.
+
+All servlets are in src/ under the cmpt352server package. JSPs and static files are in the war/ directory, along with .xml config files.
+
+---Status---
+- allows registration of users and manual entry of IMEI, UUID, and phone number
+- allows simple login using QR code as second step
+
+---TODO---
+- 60 database queries per user is probably not the best
+- error checking and encryption
+- better session tracking to make sure people are logged in at right points
+- registration system and login API for the android app to register
+- thorough testing
+- beautifying
+- perhaps test system where just 1 step with only QR code
+- Probably more stuff...
