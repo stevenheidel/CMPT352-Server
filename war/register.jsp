@@ -31,7 +31,7 @@
 	  </div>
 	  <div>
 	    <label for="androidPhone">Phone Number:</label>
-	    <input type="text" name="androidPhone" id="androidPhone" />
+	    <input type="text" name="androidPN" id="androidPN" />
 	  </div>
 	  
 	  <div><input type="submit" value="Register" /></div>

@@ -26,7 +26,7 @@ public class RegisterUser extends HttpServlet {
     	
     	user.setProperty("androidUUID", req.getParameter("androidUUID"));
     	user.setProperty("androidIMEI", req.getParameter("androidIMEI"));
-    	user.setProperty("androidPhone", req.getParameter("androidPhone"));
+    	user.setProperty("androidPN", req.getParameter("androidPN"));
     	
     	datastore.put(user);
     }
