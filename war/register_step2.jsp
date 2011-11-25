@@ -18,7 +18,7 @@
 
 				<p>Instructions:</p>
 				<p>1. Wait for text message with code, then click and hold to copy the number.</p>
-				<p>2. Open QRMOR app, press back, then press the menu button and click "Register Phone".</p>
+				<p>2. Open <a href="https://market.android.com/details?id=com.qrmor">QRMOR app</a>, press back, then press the menu button and click "Register Phone".</p>
 				<p>3. Enter your username/password and click and hold to paste the registration code.</p>
 			</div>
 		</div>
