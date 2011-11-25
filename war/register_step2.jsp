@@ -5,36 +5,22 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Index | QRMOR</title>
+<title>Register | QRMOR</title>
 
 <link rel="stylesheet" type="text/css" href="static/style.css" />
 </head>
 
 <body>
-
 	<div id="wrap">
 		<div id="header">
 			<div id="header-content">
-				<h1>QRMOR</h1>
+				<h1>Register Step 2</h1>
 
-				<br />
-				
-				<h2>
-					<a href="/login_step1.jsp">Login &gt;&gt;</a>
-				</h2>
-				<h2>
-					<a href="/register_step1.jsp">Register &gt;&gt;</a>
-				</h2>
+				<p>Instructions</p>
 			</div>
 		</div>
 
 		<div class="line"></div>
-		
-		<div id="content">
-			<div id="experience" class="cv-section">
-				<p><a href="/challenge.jsp">View Challenge Information</a></p>
-			</div>
-		</div>
 	</div>
 </body>
 </html>

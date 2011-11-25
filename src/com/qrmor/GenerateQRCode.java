@@ -1,4 +1,4 @@
-package cmpt352server;
+package com.qrmor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

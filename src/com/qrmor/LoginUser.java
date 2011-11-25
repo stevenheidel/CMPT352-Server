@@ -1,4 +1,4 @@
-package cmpt352server;
+package com.qrmor;
 
 import java.io.IOException;
 
@@ -18,11 +18,10 @@ public class LoginUser extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	            throws IOException {
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		
 		String username = req.getParameter("username");
     	String password = req.getParameter("password");
     	
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     	Entity user;
     	
     	try {

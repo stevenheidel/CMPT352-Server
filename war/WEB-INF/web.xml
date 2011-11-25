@@ -4,10 +4,28 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	
+	<security-constraint>
+        <web-resource-collection>
+            <url-pattern>/index.jsp</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+	
+	<security-constraint>
+        <web-resource-collection>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 
 	<servlet>
 		<servlet-name>register</servlet-name>
-		<servlet-class>cmpt352server.RegisterUser</servlet-class>
+		<servlet-class>com.qrmor.RegisterUser</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>register</servlet-name>
@@ -16,7 +34,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>cmpt352server.LoginUser</servlet-class>
+		<servlet-class>com.qrmor.LoginUser</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
@@ -25,7 +43,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>qrcode</servlet-name>
-		<servlet-class>cmpt352server.GenerateQRCode</servlet-class>
+		<servlet-class>com.qrmor.GenerateQRCode</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>qrcode</servlet-name>
@@ -34,7 +52,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>api</servlet-name>
-		<servlet-class>cmpt352server.API</servlet-class>
+		<servlet-class>com.qrmor.API</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>api</servlet-name>

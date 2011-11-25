@@ -1,4 +1,4 @@
-package cmpt352server;
+package com.qrmor;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
@@ -34,13 +34,16 @@ public class API extends HttpServlet {
 			}
 
 			resp.getWriter().println(token.getProperty("used"));
+			
+			if ((Boolean) token.getProperty("used"))
+				session.setAttribute("loggedin", true);
 		}
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String action = req.getPathInfo();
-		
+
 		// POST to authenticate with QR Code App
 		if (action.startsWith("/qrauth/")) {			
 			String code = action.substring("/qrauth/".length());
@@ -68,11 +71,42 @@ public class API extends HttpServlet {
 			String IMEI = req.getParameter("IMEI");
 			String PN = req.getParameter("PN");
 			String AC = req.getParameter("AC");
-						
+
 			if (UUID.equals(user.getProperty("androidUUID")) && IMEI.equals(user.getProperty("androidIMEI")) && PN.equals(user.getProperty("androidPN"))) {
 				token.setProperty("used", true);
 				datastore.put(token);
 			}
+		}
+
+		// POST to register with app
+		else if (action.startsWith("/register")) {
+			String UUID = req.getParameter("UUID");
+			String IMEI = req.getParameter("IMEI");
+			String PN = req.getParameter("PN");
+			
+			String username = req.getParameter("UN");
+			String password = req.getParameter("PS");
+			
+			String textCode = req.getParameter("RC");
+			
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Entity user;
+			
+			try {
+				user = datastore.get(KeyFactory.createKey("User", username));
+			} catch (EntityNotFoundException e) {
+				e.printStackTrace();
+				return;
+			}
+	    	
+	    	if (user.getProperty("password").equals(password) && 
+	    			user.getProperty("textCode").equals(textCode) && 
+	    			user.getProperty("androidPN").equals(PN)) {
+	    		user.setProperty("androidUUID", UUID);
+	    		user.setProperty("androidIMEI", IMEI);
+	    	}
+	    	
+	    	datastore.put(user);
 		}
 	}
 }

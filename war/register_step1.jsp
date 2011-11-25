@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Login Step 1 | QRMOR</title>
+<title>Register | QRMOR</title>
 
 <link rel="stylesheet" type="text/css" href="static/style.css" />
 </head>
@@ -14,9 +14,9 @@
 	<div id="wrap">
 		<div id="header">
 			<div id="header-content">
-				<h1>Login Step 1</h1>
+				<h1>Register Step 1</h1>
 
-				<form id="form" name="form" action="/login" method="post">
+				<form id="form" name="form" action="/register" method="post">
 					<div>
 						<label for="username">Username:</label> <input type="text"
 							name="username" id="username" />
@@ -25,9 +25,17 @@
 						<label for="password">Password:</label> <input type="password"
 							name="password" id="password" />
 					</div>
+					<div>
+						<label for="password">Password Again:</label> <input
+							type="password" name="password2" id="password2" />
+					</div>
+					<div>
+						<label for="androidPhone">Phone Number:<span class="small">Example: 15551234567 SaskTel only</span></label> <input type="text"
+							name="phone" id="phone" />
+					</div>
 
 					<div>
-						<input type="submit" value="Login" />
+						<input type="submit" value="Register" />
 					</div>
 				</form>
 			</div>
