@@ -20,6 +20,7 @@
 				<p>Tim Horton's gift card to anyone who can!</p>
 				<p>If you notice any security problems or have any suggestions/questions, send an email to steven -at- heidel.ca</p>
 				<p>The app is available on the Android Market, just search "QRMOR"</p>
+				<p><a href="https://market.android.com/details?id=main.namespace">Direct Link</a></p>
 			</div>
 		</div>
 
