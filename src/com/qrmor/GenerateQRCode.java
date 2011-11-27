@@ -46,7 +46,7 @@ public class GenerateQRCode extends HttpServlet {
 		// chart size
 		String chs = "300x300";
 		// chart data
-		String chl = req.getScheme() + "://" + req.getServerName() + req.getContextPath() + "/api/qrauth/" + code;
+		String chl = code;
 
 		// get the QR code from Google
 		URL url = new URL("https://chart.googleapis.com/chart?cht=qr&chs=" + chs + "&chl=" + URLEncoder.encode(chl, "UTF-8"));

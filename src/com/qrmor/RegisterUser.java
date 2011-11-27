@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.KeyFactory;
 
 
 public class RegisterUser extends HttpServlet {
@@ -29,14 +31,20 @@ public class RegisterUser extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
+		Entity user;
+		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String phone = req.getParameter("phone");
 
 		String code = new BigInteger(32, random).toString();
 
-		Entity user = new Entity("User", username);
+		try {
+			user = datastore.get(KeyFactory.createKey("User", username));
+			return;
+		} catch (EntityNotFoundException e) {}
+		
+		user = new Entity("User", username);
 		user.setProperty("username", username);
 		user.setProperty("password", password);
 		user.setProperty("androidPN", phone);
