@@ -50,7 +50,7 @@ public class RegisterUser extends HttpServlet {
 		user.setProperty("androidPN", phone);
 
 		user.setProperty("textCode", code);
-
+		
 		datastore.put(user);
 
 		// send text message
